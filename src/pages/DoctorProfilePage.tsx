@@ -3,12 +3,12 @@ import {
   ArrowRight,
   Award,
   Building2,
-  CalendarDays,
   CheckCircle2,
   Clock3,
   Languages,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Stethoscope,
 } from 'lucide-react'
@@ -16,7 +16,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { DoctorCard } from '../components/DoctorCard'
 import { useClinicData } from '../context/ClinicDataContext'
-import { phoneHref } from '../lib/contact'
+import { phoneHref, whatsappHref } from '../lib/contact'
 
 export function DoctorProfilePage() {
   const { slug } = useParams()
@@ -85,9 +85,9 @@ export function DoctorProfilePage() {
                 {doctor.focus.map((item) => <span key={item}>{item}</span>)}
               </div>
               <div className="profile-intro__actions">
-                <Link className="button button--primary" to={`/contacto?motivo=cita&medico=${doctor.slug}`}>
-                  <CalendarDays size={18} aria-hidden="true" /> Solicitar cita
-                </Link>
+                <a className="button button--primary" href={whatsappHref(doctor.phone)} target="_blank" rel="noreferrer">
+                  <MessageCircle size={18} aria-hidden="true" /> Escribir por WhatsApp
+                </a>
                 <a className="button button--secondary" href={phoneHref(doctor.phone)}>
                   <Phone size={18} aria-hidden="true" /> Llamar al consultorio
                 </a>
