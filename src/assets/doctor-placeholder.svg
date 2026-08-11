@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Fotografía pendiente</title>
+  <desc id="desc">Marcador institucional para un perfil médico sin fotografía.</desc>
+  <rect width="640" height="800" fill="#eef4f9"/>
+  <path d="M0 610c124-68 248-102 372-102 101 0 190 23 268 69v223H0Z" fill="#dce9f5"/>
+  <circle cx="320" cy="283" r="122" fill="#b9cddd"/>
+  <path d="M143 800c8-177 79-287 177-287s169 110 177 287Z" fill="#8eabc0"/>
+  <path d="M294 523h52v147h-52z" fill="#fff"/>
+  <path d="M246 570h148v52H246z" fill="#fff"/>
+  <circle cx="520" cy="116" r="62" fill="#0869f4"/>
+  <path d="M500 116h40M520 96v40" stroke="#fff" stroke-width="13" stroke-linecap="round"/>
+  <path d="M67 105c61 3 104 28 128 76-66 5-110-19-128-76Z" fill="#2ea83b"/>
+</svg>
