@@ -14,7 +14,6 @@ import {
   Newspaper,
   Pencil,
   Plus,
-  RotateCcw,
   Save,
   Search,
   Settings,
@@ -870,8 +869,8 @@ function NoticesAdmin() {
 
 function SettingsAdmin() {
   const [message, setMessage] = useState('')
-  const [formVersion, setFormVersion] = useState(0)
-  const { resetData, settings, updateSettings } = useClinicData()
+
+  const { settings, updateSettings } = useClinicData()
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -888,18 +887,12 @@ function SettingsAdmin() {
     setMessage('Datos de la clínica actualizados correctamente.')
   }
 
-  const handleReset = () => {
-    if (window.confirm('¿Desea restaurar todo el contenido de demostración? Se perderán los cambios locales.')) {
-      resetData()
-      setFormVersion((current) => current + 1)
-      setMessage('Contenido de demostración restaurado.')
-    }
-  }
+
 
   return (
     <div className="admin-page">
       <div className="admin-page-heading"><div><p>Configuración pública</p><h1>Datos de la clínica</h1><span>Esta información se reutiliza en el encabezado, pie de página y contacto.</span></div></div>
-      <form className="admin-editor-form" key={`${formVersion}-${Object.values(settings).join('|')}`} onSubmit={handleSubmit}>
+      <form className="admin-editor-form" key={Object.values(settings).join('|')} onSubmit={handleSubmit}>
         <section className="admin-form-card">
           <div className="admin-form-card__heading"><span>01</span><div><h2>Contacto</h2><p>Canales generales visibles para pacientes.</p></div></div>
           <div className="admin-form-grid admin-form-grid--two"><label>Teléfono<input name="phone" defaultValue={settings.phone} required /></label><label>WhatsApp<input name="whatsapp" defaultValue={settings.whatsapp} required /></label></div>
@@ -912,7 +905,7 @@ function SettingsAdmin() {
           <label>Nota de emergencias<textarea name="emergencyNote" rows={3} defaultValue={settings.emergencyNote} required /></label>
         </section>
         <div className="admin-editor-actions">
-          <button className="admin-reset-button" type="button" onClick={handleReset}><RotateCcw size={17} aria-hidden="true" /> Restaurar demostración</button>
+
           <span className="save-message" aria-live="polite">{message}</span>
           <button className="button button--admin-primary" type="submit"><Save size={17} aria-hidden="true" /> Guardar configuración</button>
         </div>
