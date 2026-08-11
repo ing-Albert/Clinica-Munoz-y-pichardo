@@ -1236,6 +1236,19 @@ select {
   color: var(--ink-soft);
 }
 
+.doctor-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.doctor-card__whatsapp {
+  padding: 8px 14px;
+  font-size: 0.72rem;
+  gap: 6px;
+  white-space: nowrap;
+}
+
 .clinic-stats {
   color: #c9d9d5;
   background: var(--ink-dark);
@@ -2067,11 +2080,13 @@ select {
   margin-bottom: 20px;
   background: var(--ink-dark);
   border-radius: 6px;
+  overflow: hidden;
 }
 
 .location-card__numbers > div {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   padding: 14px 17px;
   border-right: 1px solid var(--line-dark);
 }
@@ -2084,14 +2099,18 @@ select {
   color: #9ab2ac;
   font-size: 0.57rem;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .location-card__numbers strong {
   color: #fff;
   font-family: 'Newsreader', Georgia, serif;
-  font-size: 1.7rem;
+  font-size: clamp(1.1rem, 4vw, 1.7rem);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .location-card dl {
@@ -2229,12 +2248,20 @@ select {
   margin: 10px 0 16px;
 }
 
-.profile-appointment-card > span {
-  display: block;
+.profile-appointment-card > span,
+.profile-appointment-card__phone {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   padding-top: 15px;
   color: #9eb5af;
   border-top: 1px solid var(--line-dark);
-  font-size: 0.61rem;
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.profile-appointment-card__phone:hover {
+  color: #fff;
 }
 
 /* News and articles */
@@ -6689,6 +6716,10 @@ select {
   color: #183b50;
 }
 
+.site-shell .prepare-card h3 {
+  color: #fff;
+}
+
 .site-shell .eyebrow {
   color: #237f33;
 }
@@ -8397,6 +8428,10 @@ select {
   /* Location card */
   .location-card__numbers {
     grid-template-columns: 1fr 1fr;
+  }
+  
+  .location-card__numbers > div {
+    padding: 12px 10px;
   }
 
   /* Contact options */

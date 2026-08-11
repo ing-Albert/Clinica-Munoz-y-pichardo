@@ -194,9 +194,7 @@ export function PublicLayout() {
             <a href={`mailto:${settings.email}`}>
               <Mail size={17} aria-hidden="true" /> {settings.email}
             </a>
-            <Link className="footer-cta" to="/contacto?motivo=cita">
-              Solicitar una cita <ArrowRight size={17} aria-hidden="true" />
-            </Link>
+
           </div>
         </div>
         <div className="container site-footer__emergency">
@@ -204,7 +202,7 @@ export function PublicLayout() {
           <p>{settings.emergencyNote}</p>
         </div>
         <div className="container site-footer__bottom">
-          <p>© {new Date().getFullYear()} {settings.clinicName} · Contenido demostrativo.</p>
+          <p>© {new Date().getFullYear()} {settings.clinicName}.</p>
           <div>
             <Link to="/privacidad">Privacidad</Link>
             <Link to="/accesibilidad">Accesibilidad</Link>

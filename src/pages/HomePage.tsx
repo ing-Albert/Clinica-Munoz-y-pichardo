@@ -18,6 +18,7 @@ import {
   Snowflake,
   Stethoscope,
   Waves,
+  BookOpenText,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -108,8 +109,8 @@ export function HomePage() {
               <div>
                 <small>Atención y orientación</small>
                 <strong>Comuníquese con recepción</strong>
-                <Link to="/contacto?motivo=cita">
-                  Ver contactos <ArrowRight size={15} aria-hidden="true" />
+                <Link to="/contacto">
+                  Ver teléfonos <ArrowRight size={15} aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -123,9 +124,9 @@ export function HomePage() {
 
       <section className="quick-actions" aria-label="Acciones rápidas">
         <div className="container quick-actions__grid">
-          <Link to="/contacto?motivo=cita" className="quick-action">
-            <span className="quick-action__icon"><CalendarDays size={23} aria-hidden="true" /></span>
-            <span><strong>Solicitar una cita</strong><small>Le contactaremos para confirmar</small></span>
+          <Link to="/especialidades" className="quick-action">
+            <span className="quick-action__icon"><BookOpenText size={23} aria-hidden="true" /></span>
+            <span><strong>Especialidades</strong><small>Conozca nuestros servicios</small></span>
             <ArrowRight size={19} aria-hidden="true" />
           </Link>
           <Link to="/medicos" className="quick-action">
@@ -232,19 +233,16 @@ export function HomePage() {
       </section>
 
       <section className="section insurance-section">
-        <div className="container insurance-panel">
-          <div className="insurance-panel__copy">
-            <p className="eyebrow eyebrow--light">Cobertura médica</p>
-            <h2>Seguros médicos afiliados</h2>
-            <p>Trabajamos con distintas administradoras de riesgos de salud. Confirme la cobertura de su plan antes de la consulta.</p>
-            <div className="insurance-panel__summary">
-              <span><ShieldCheck size={25} aria-hidden="true" /></span>
-              <div>
-                <strong>{affiliatedInsurers.length} entidades afiliadas</strong>
-                <small>Consulte las condiciones de su plan.</small>
-              </div>
+        <div className="insurance-panel__copy">
+          <p className="eyebrow eyebrow--light">Cobertura médica</p>
+          <h2>Seguros médicos afiliados</h2>
+          <p>Trabajamos con distintas administradoras de riesgos de salud. Confirme la cobertura de su plan antes de la consulta.</p>
+          <div className="insurance-panel__summary">
+            <span><ShieldCheck size={25} aria-hidden="true" /></span>
+            <div>
+              <strong>{affiliatedInsurers.length} entidades afiliadas</strong>
+              <small>Consulte las condiciones de su plan.</small>
             </div>
-            <a className="button button--light" href={phoneHref(settings.phone)}><Phone size={17} aria-hidden="true" /> Confirmar cobertura</a>
           </div>
           <figure className="insurance-panel__logos">
             <div className="insurance-panel__visual-heading">

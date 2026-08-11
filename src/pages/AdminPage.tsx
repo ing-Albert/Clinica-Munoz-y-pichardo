@@ -30,6 +30,7 @@ import {
   type NoticeDraft,
   type SpecialtyDraft,
 } from '../context/ClinicDataContext'
+import placeholderImg from '../assets/doctor-placeholder.svg'
 import { endAdminSession } from '../lib/auth'
 import type {
   Doctor,
@@ -344,7 +345,7 @@ function DoctorsAdmin() {
             const specialtyNames = doctor.specialtyIds.map((id) => specialties.find((item) => item.id === id)?.name).filter(Boolean).join(', ')
             return (
               <article key={doctor.id}>
-                <img src={doctor.image} alt="" style={{ objectPosition: doctor.imagePosition }} />
+                <img src={doctor.image || placeholderImg} alt="" style={{ objectPosition: doctor.imagePosition }} />
                 <div><h2>{doctor.name}</h2><p>{specialtyNames}</p><small>{doctor.floor} · {doctor.office}</small></div>
                 <span className={doctor.availabilityLabel ? 'status-neutral' : doctor.acceptingAppointments ? 'status-published' : 'status-draft'}>{doctor.availabilityLabel ?? (doctor.acceptingAppointments ? 'Disponible' : 'Lista de espera')}</span>
                 <button className="button button--admin-secondary" type="button" onClick={() => setEditingId(doctor.id)}><Pencil size={16} aria-hidden="true" /> Editar perfil</button>
@@ -439,7 +440,7 @@ function DoctorEditor({ doctor, specialties, onClose }: { doctor: Doctor; specia
           </div>
           <div className="admin-photo-editor">
             <div className="admin-photo-editor__preview">
-              <img src={image} alt={`Vista previa de ${doctor.name}`} style={{ objectPosition: doctor.imagePosition }} />
+              <img src={image || placeholderImg} alt={`Vista previa de ${doctor.name}`} style={{ objectPosition: doctor.imagePosition }} />
             </div>
             <div className="admin-photo-editor__controls">
               <div>

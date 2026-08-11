@@ -105,8 +105,18 @@ export function DoctorProfilePage() {
                 </div>
               </div>
               <div className="location-card__numbers">
-                <div><small>Piso</small><strong>{doctor.floor.replace(/^Piso\s*/i, '')}</strong></div>
-                <div><small>Consultorio</small><strong>{doctor.office.replace(/^Consultorio\s*/i, '')}</strong></div>
+                <div>
+                  <small>Piso</small>
+                  <strong title={doctor.floor}>
+                    {/^consultar$/i.test(doctor.floor.trim()) ? '—' : doctor.floor.replace(/^Piso\s*/i, '')}
+                  </strong>
+                </div>
+                <div>
+                  <small>Consultorio</small>
+                  <strong title={doctor.office}>
+                    {/^recepci[oó]n$/i.test(doctor.office.trim()) ? 'Recepción' : doctor.office.replace(/^Consultorio\s*/i, '')}
+                  </strong>
+                </div>
               </div>
               <dl>
                 <div><dt><Building2 size={17} aria-hidden="true" /> Dirección</dt><dd>{settings.address}</dd></div>
@@ -151,14 +161,22 @@ export function DoctorProfilePage() {
           </article>
 
           <aside className="profile-appointment-card">
-            <p className="eyebrow">Solicitar una cita</p>
-            <h2>¿Desea atenderse con {doctor.name}?</h2>
-            <p>Envíe su solicitud y nuestro equipo confirmará la fecha y el horario disponibles.</p>
-            <Link className="button button--light" to={`/contacto?motivo=cita&medico=${doctor.slug}`}>
-              Consultar disponibilidad <ArrowRight size={17} aria-hidden="true" />
-            </Link>
-            <span>No envíe información médica sensible mediante el formulario general.</span>
+            <p className="eyebrow">Agendar consulta</p>
+            <h2>¿Desea atenderse con {doctor.name.replace(/^(Dra?\.) /, '')}?</h2>
+            <p>Escriba directamente por WhatsApp y coordine su cita de forma rápida.</p>
+            <a
+              className="button button--light"
+              href={`${whatsappHref(doctor.phone)}?text=${encodeURIComponent(`Hola ${doctor.name}, me gustaría agendar una consulta.`)}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={17} aria-hidden="true" /> Escribir por WhatsApp
+            </a>
+            <a className="profile-appointment-card__phone" href={phoneHref(doctor.phone)}>
+              <Phone size={15} aria-hidden="true" /> {doctor.phone}
+            </a>
           </aside>
+
         </div>
       </section>
 

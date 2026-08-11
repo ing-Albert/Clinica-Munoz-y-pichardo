@@ -1,7 +1,8 @@
-import { ArrowRight, MapPin } from 'lucide-react'
+import { ArrowRight, MapPin, MessageCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useClinicData } from '../context/ClinicDataContext'
 import placeholderImg from '../assets/doctor-placeholder.svg'
+import { whatsappHref } from '../lib/contact'
 import type { Doctor } from '../types'
 
 export function DoctorCard({ doctor }: { doctor: Doctor }) {
@@ -12,6 +13,9 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
     .join(' · ')
   const availabilityLabel = doctor.availabilityLabel
     ?? (doctor.acceptingAppointments ? 'Recibe pacientes' : 'Lista de espera')
+
+  const waMessage = encodeURIComponent(`Hola, me gustaría agendar una cita con ${doctor.name}.`)
+  const waLink = `${whatsappHref(doctor.phone)}?text=${waMessage}`
 
   return (
     <article className="doctor-card">
@@ -39,9 +43,14 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
             {doctor.floor} · {doctor.office}
           </span>
         </div>
-        <Link className="text-link" to={`/medicos/${doctor.slug}`}>
-          Ver perfil <ArrowRight size={17} aria-hidden="true" />
-        </Link>
+        <div className="doctor-card__actions">
+          <a className="button button--primary doctor-card__whatsapp" href={waLink} target="_blank" rel="noreferrer" aria-label={`Escribir por WhatsApp a ${doctor.name}`}>
+            <MessageCircle size={16} aria-hidden="true" /> WhatsApp
+          </a>
+          <Link className="text-link" to={`/medicos/${doctor.slug}`}>
+            Ver perfil <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </article>
   )

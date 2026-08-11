@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, Check, ChevronRight, Stethoscope } from 'lucide-react'
+import { Check, ChevronRight, Stethoscope } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { Breadcrumbs } from '../components/Breadcrumbs'
 import { DoctorCard } from '../components/DoctorCard'
@@ -50,9 +50,6 @@ export function SpecialtyPage() {
             </div>
             <div className="specialty-hero__action">
               <span>{specialtyDoctors.length} profesionales en esta especialidad</span>
-              <Link className="button button--primary" to={`/contacto?motivo=cita&especialidad=${specialty.slug}`}>
-                <CalendarDays size={18} aria-hidden="true" /> Solicitar cita
-              </Link>
             </div>
           </div>
         </div>
@@ -106,17 +103,6 @@ export function SpecialtyPage() {
         </div>
       </section>
 
-      <section className="simple-cta">
-        <div className="container simple-cta__inner">
-          <div>
-            <p className="eyebrow eyebrow--light">Siguiente paso</p>
-            <h2>Solicite una cita con el equipo de {specialty.name}.</h2>
-          </div>
-          <Link className="button button--light" to={`/contacto?motivo=cita&especialidad=${specialty.slug}`}>
-            Consultar disponibilidad <ArrowRight size={17} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
     </>
   )
 }
