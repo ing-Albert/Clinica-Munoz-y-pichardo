@@ -233,15 +233,17 @@ export function HomePage() {
       </section>
 
       <section className="section insurance-section">
-        <div className="insurance-panel__copy">
-          <p className="eyebrow eyebrow--light">Cobertura médica</p>
-          <h2>Seguros médicos afiliados</h2>
-          <p>Trabajamos con distintas administradoras de riesgos de salud. Confirme la cobertura de su plan antes de la consulta.</p>
-          <div className="insurance-panel__summary">
-            <span><ShieldCheck size={25} aria-hidden="true" /></span>
-            <div>
-              <strong>{affiliatedInsurers.length} entidades afiliadas</strong>
-              <small>Consulte las condiciones de su plan.</small>
+        <div className="container insurance-panel">
+          <div className="insurance-panel__copy">
+            <p className="eyebrow eyebrow--light">Cobertura médica</p>
+            <h2>Seguros médicos afiliados</h2>
+            <p>Trabajamos con distintas administradoras de riesgos de salud. Confirme la cobertura de su plan antes de la consulta.</p>
+            <div className="insurance-panel__summary">
+              <span><ShieldCheck size={25} aria-hidden="true" /></span>
+              <div>
+                <strong>{affiliatedInsurers.length} entidades afiliadas</strong>
+                <small>Consulte las condiciones de su plan.</small>
+              </div>
             </div>
           </div>
           <figure className="insurance-panel__logos">
