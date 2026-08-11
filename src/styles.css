@@ -8323,3 +8323,132 @@ select {
     width: 100%;
   }
 }
+
+/* ============================================================
+   MOBILE REFINEMENTS – screens ≤ 390px (modern small phones)
+   ============================================================ */
+@media (max-width: 390px) {
+  /* Layout */
+  .container {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .section {
+    padding: 52px 0;
+  }
+
+  /* Typography scale-down */
+  .home-hero h1 {
+    font-size: clamp(2.6rem, 14vw, 3.8rem);
+  }
+
+  .section-heading h2 {
+    font-size: 2.1rem;
+  }
+
+  .page-hero h1,
+  .article-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .specialty-hero h1,
+  .profile-intro h1,
+  .contact-hero h1 {
+    font-size: 2.6rem;
+  }
+
+  /* Header */
+  .brand__logo {
+    width: 190px;
+    height: 54px;
+  }
+
+  /* Hero visual */
+  .home-hero__visual {
+    min-height: 360px;
+  }
+
+  .hero-availability-card {
+    width: 200px;
+    padding: 11px;
+    font-size: 0.75rem;
+  }
+
+  /* Doctor cards */
+  .doctor-card__image,
+  .doctors-grid--directory .doctor-card__image {
+    height: min(380px, 105vw);
+  }
+
+  /* Profile */
+  .profile-photo {
+    height: 360px;
+  }
+
+  .profile-intro__actions {
+    gap: 10px;
+  }
+
+  .profile-intro__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Location card */
+  .location-card__numbers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Contact options */
+  .contact-options__grid > a {
+    padding: 18px 14px;
+  }
+
+  /* Appointment band */
+  .appointment-band__actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* News */
+  .news-card__image {
+    height: 52vw;
+  }
+
+  /* Quick action */
+  .quick-action {
+    padding: 16px 14px;
+  }
+
+  /* Footer */
+  .site-footer__top {
+    gap: 28px;
+  }
+
+  /* Specialty page action */
+  .specialty-hero__action {
+    gap: 14px;
+  }
+
+  /* Admin tweaks */
+  .admin-main {
+    padding-inline: 14px;
+  }
+
+  .admin-topbar {
+    padding-inline: 14px;
+  }
+
+  .admin-form-card,
+  .admin-composer {
+    padding: 14px;
+  }
+
+  .admin-composer__heading {
+    margin: -14px -14px 14px;
+  }
+
+  .admin-composer__footer {
+    margin: 5px -14px -14px;
+  }
+}

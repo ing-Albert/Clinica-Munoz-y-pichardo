@@ -132,16 +132,12 @@ export function PublicLayout() {
                 {item.label}
               </NavLink>
             ))}
-            <Link className="button button--primary main-nav__appointment" to="/contacto?motivo=cita" onClick={() => closeMenu()}>
-              Solicitar cita
-            </Link>
+
           </nav>
           {menuOpen && (
             <button className="nav-backdrop" type="button" aria-label="Cerrar menú" onClick={() => closeMenu(true)} />
           )}
-          <Link className="button button--primary header-appointment" to="/contacto?motivo=cita">
-            Solicitar cita
-          </Link>
+
           <button
             ref={menuButtonRef}
             className="menu-button"

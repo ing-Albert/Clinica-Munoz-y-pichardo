@@ -1,6 +1,7 @@
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useClinicData } from '../context/ClinicDataContext'
+import placeholderImg from '../assets/doctor-placeholder.svg'
 import type { Doctor } from '../types'
 
 export function DoctorCard({ doctor }: { doctor: Doctor }) {
@@ -16,7 +17,7 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
     <article className="doctor-card">
       <Link className="doctor-card__image" to={`/medicos/${doctor.slug}`} tabIndex={-1} aria-hidden="true">
         <img
-          src={doctor.image}
+          src={doctor.image || placeholderImg}
           alt=""
           style={{ objectPosition: doctor.imagePosition }}
           loading="lazy"

@@ -1,5 +1,4 @@
 import {
-  AlertCircle,
   Bell,
   BookOpenText,
   CheckCircle2,
@@ -99,7 +98,7 @@ async function optimizeDoctorImage(file: File) {
 export function AdminPage() {
   const [section, setSection] = useState<AdminSection>('overview')
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [persistenceError, setPersistenceError] = useState<string | null>(null)
+
   const [isMobileSidebar, setIsMobileSidebar] = useState(() => window.matchMedia('(max-width: 1020px)').matches)
   const sidebarRef = useRef<HTMLElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -148,13 +147,6 @@ export function AdminPage() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [isMobileSidebar, sidebarOpen])
 
-  useEffect(() => {
-    const handlePersistenceStatus = (event: Event) => {
-      setPersistenceError((event as CustomEvent<string | null>).detail)
-    }
-    window.addEventListener('clinic:persistence-status', handlePersistenceStatus)
-    return () => window.removeEventListener('clinic:persistence-status', handlePersistenceStatus)
-  }, [])
 
   const closeSidebar = (restoreFocus = false) => {
     setSidebarOpen(false)
@@ -245,16 +237,6 @@ export function AdminPage() {
         </header>
 
         <main className="admin-main">
-          <div className="admin-demo-banner">
-            <AlertCircle size={18} aria-hidden="true" />
-            <p><strong>Modo demostración.</strong> Los cambios funcionan y se guardan en este navegador, pero todavía no se sincronizan con un servidor.</p>
-          </div>
-          {persistenceError && (
-            <div className="admin-storage-error" role="alert">
-              <AlertCircle size={18} aria-hidden="true" />
-              <p><strong>No se pudieron guardar los cambios.</strong> {persistenceError}</p>
-            </div>
-          )}
           {section === 'overview' && <AdminOverview onNavigate={openSection} />}
           {section === 'doctors' && <DoctorsAdmin />}
           {section === 'specialties' && <SpecialtiesAdmin />}

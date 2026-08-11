@@ -17,6 +17,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs'
 import { DoctorCard } from '../components/DoctorCard'
 import { useClinicData } from '../context/ClinicDataContext'
 import { phoneHref, whatsappHref } from '../lib/contact'
+import placeholderImg from '../assets/doctor-placeholder.svg'
 
 export function DoctorProfilePage() {
   const { slug } = useParams()
@@ -66,8 +67,8 @@ export function DoctorProfilePage() {
           <div className="profile-hero__grid">
             <div className="profile-photo">
               <img
-                src={doctor.image}
-                alt={doctor.imageIsPlaceholder ? '' : `Retrato de ${doctor.name}`}
+                src={doctor.image || placeholderImg}
+                alt={doctor.image && !doctor.imageIsPlaceholder ? `Retrato de ${doctor.name}` : ''}
                 style={{ objectPosition: doctor.imagePosition }}
               />
             </div>

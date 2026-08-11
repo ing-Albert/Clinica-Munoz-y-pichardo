@@ -55,7 +55,7 @@ export function ContactPage() {
           </a>
           <a href={`mailto:${settings.email}`}>
             <span><Mail size={23} aria-hidden="true" /></span>
-            <small>Correo de citas</small>
+            <small>Correo electrónico</small>
             <strong>{settings.email}</strong>
             <em>Enviar correo <ArrowRight size={16} aria-hidden="true" /></em>
           </a>
